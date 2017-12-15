@@ -6,7 +6,7 @@ You are a scientist in a post-apocalyptic world. In your lab you have plenty of 
 
 ## Instructions
 
-* Fork this repo and clone your fork in your local machine;
+* Fork this repo and clone your fork in your local machine. Alternatively, if you prefer to keep your challenge private, just download the code of this repo and send the final result to jobs@badiapp.com.
 * The challenge is on! Implement the 6 steps described below;
 * Create a pull request. 
 
@@ -47,3 +47,4 @@ docker-compose logs -f
 [Badi](https://www.crunchbase.com/organization/badi) is a startup based in Barcelona (Spain) which offers a two-sided marketplace for shared flats and roommates (mobile and web app). 
 Our goal is making city living affordable for everyone by unlocking available rooms inside crowded urban areas. How? By offering the best marketplace that intelligently matches verified profiles without intermediaries. 
 Do you want to join our tech team as a backend engineer? Accept our challenge and impress us :)
+In case of questions or doubts, don't hesitate to reach out to us at jobs@badiapp.com.
