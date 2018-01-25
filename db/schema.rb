@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170901160504) do
 
-  create_table "armors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "armors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.integer "defense_points"
     t.integer "durability"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20170901160504) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "weapons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "weapons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.integer "attack_points"
     t.integer "durability"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20170901160504) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "zombie_armors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "zombie_armors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "zombie_id"
     t.bigint "armor_id"
     t.datetime "created_at", null: false
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170901160504) do
     t.index ["zombie_id"], name: "index_zombie_armors_on_zombie_id"
   end
 
-  create_table "zombie_weapons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "zombie_weapons", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "zombie_id"
     t.bigint "weapon_id"
     t.datetime "created_at", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170901160504) do
     t.index ["zombie_id"], name: "index_zombie_weapons_on_zombie_id"
   end
 
-  create_table "zombies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+  create_table "zombies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.integer "hit_points"
     t.integer "brains_eaten"

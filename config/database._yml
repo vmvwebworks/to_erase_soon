@@ -13,21 +13,21 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   collation: utf8mb4_unicode_ci
+  host: <%= ENV.fetch('API_DB_HOST', 'localhost') %>
   pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
   username: root
-  password: mmm_
-  socket: /var/run/mysqld/mysqld.sock
+  password: <%= ENV.fetch('API_DB_PASSWORD', '') %>
 
 development:
   <<: *default
-  database:  badi_zombies_development
+  database:  <%= ENV.fetch('API_DB_NAME', 'coding-challenge-api-dev') %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database:  badi_zombies_test
+  database:  <%= ENV.fetch('API_DB_NAME', 'coding-challenge-api-test') %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: badi_zombies_production
-  username: bazi_zombies
-  password: <%= ENV['BADI_ZOMBIES_DATABASE_PASSWORD'] %>
+  database: <%= ENV['API_DB_NAME'] %>
+  username: <%= ENV['API_DB_USERNAME'] %>
+  password: <%= ENV['API_DB_PASSWORD'] %>
