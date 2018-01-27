@@ -14,16 +14,17 @@ module Api
         json_response(@zombie, :created)
       end
       def update
-        
+
       end
       def destroy
 
       end
 
+
       private
 
       def item_params
-        params.permit(:name, :done)
+        params.permit(:name, :hit_points, :brains_eaten, :speed, :turn_date, :done)
       end
 
     end
