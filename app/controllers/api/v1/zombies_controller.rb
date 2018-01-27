@@ -10,7 +10,7 @@ module Api
         json_response(@zombie)
       end
       def create
-        @zombie = Zombie.create!(zombie_params)
+        @zombie = Zombie.create(zombie_params)
         json_response(@zombie, :created)
       end
       def update
@@ -19,7 +19,9 @@ module Api
         json_response(@zombie)
       end
       def destroy
-
+        @zombie = Zombie.find(params[:id])
+        @zombie.destroy
+        json_response(@zombie)
       end
 
 
