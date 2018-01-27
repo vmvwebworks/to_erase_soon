@@ -14,8 +14,9 @@ module Api
         json_response(@zombie, :created)
       end
       def update
-        @zombie = Zombie.update(zombie_params)
-
+        @zombie = Zombie.find(params[:id])
+        @zombie.update(zombie_params)
+        json_response(@zombie)
       end
       def destroy
 
