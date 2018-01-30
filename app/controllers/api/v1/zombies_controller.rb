@@ -29,6 +29,9 @@ module Api
       def build_query
         @zombies = Zombie.where("name LIKE ?", "%#{params[:name]}%") if params[:name]
         @zombies = @zombies.where("hit_points LIKE ?", params[:hit_points]) if params[:hit_points]
+        @zombies = @zombies.where("brains_eaten LIKE ?", params[:brains_eaten]) if params[:brains_eaten]
+        @zombies = @zombies.where("speed LIKE ?", params[:speed]) if params[:speed]
+        @zombies = @zombies.where("turn_date LIKE ?", "%#{params[:turn_date]}%") if params[:turn_date]
         json_response(@zombies)
       end
 
