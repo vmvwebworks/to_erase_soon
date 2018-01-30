@@ -2,8 +2,8 @@ module Api
   module V1
     class ZombiesController < ApplicationController
       def index
-        @zombies = Zombie.all
-        json_response(@zombies)
+        build_query
+
       end
       def show
         @zombie = Zombie.find(params[:id])
@@ -26,6 +26,11 @@ module Api
 
 
       private
+      def build_query
+        @zombies = Zombie.where("name LIKE ?", "%#{params[:name]}%") if params[:name]
+        @zombies = @zombies.where("hit_points LIKE ?", params[:hit_points]) if params[:hit_points]
+        json_response(@zombies)
+      end
 
       def zombie_params
         params.permit(:name, :hit_points, :brains_eaten, :speed, :turn_date, :done)
