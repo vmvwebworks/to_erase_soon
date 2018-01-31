@@ -5,16 +5,23 @@ module Api
         build_armor_query
       end
       def show
-
+        @armor = Armor.find(params[:id])
+        json_response(@armor)
       end
       def create
-
+        @armor = Armor.create(armor_params)
+        json_response(@armor, :created)
       end
       def update
-
+        @armor = Armor.find(params[:id])
+        @armor.update(armor_params)
+        json_response(@armor, :updated)
       end
       def destroy
-
+        @armor = Armor.find(params[:id])
+        @armor.zombie_armors.destroy
+        @armor.destroy
+        json_response(@armor, :destroyed)
       end
       private
 
