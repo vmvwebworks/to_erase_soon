@@ -3,7 +3,7 @@ module Api
     class ZombiesController < ApplicationController
 
       def index
-      build_zombies_query
+        build_zombies_query
       end
 
       def show
@@ -91,6 +91,7 @@ module Api
       private
 
       def build_zombies_query
+        @zombies = Zombie.all
         @zombies = Zombie.where("name LIKE ?", "%#{params[:name]}%") if params[:name]
         @zombies = @zombies.where("hit_points LIKE ?", params[:hit_points]) if params[:hit_points]
         @zombies = @zombies.where("brains_eaten LIKE ?", params[:brains_eaten]) if params[:brains_eaten]
@@ -102,13 +103,18 @@ module Api
       def build_zombie_armors_query
         @zombie_armors = Armor.includes(:zombie_armors).where(:zombie_armors => { zombie_id: params[:id] } ).all
         @zombie_armors = @zombie_armors.where("name LIKE ?", "%#{params[:name]}%") if params[:name]
-        @zombie_armors = @zombie_armors.where("name LIKE ?", "%#{params[:attack_points]}%") if params[:attack_points]
+        @zombie_armors = @zombie_armors.where("defense_points LIKE ?", params[:defense_points]) if params[:defense_points]
+        @zombie_armors = @zombie_armors.where("durability LIKE ?", params[:durability]) if params[:durability]
+        @zombie_armors = @zombie_armors.where("price LIKE ?", params[:price]) if params[:price]
         json_response(@zombie_armors)
       end
 
       def build_zombie_weapons_query
         @zombie_weapons = Weapon.includes(:zombie_weapons).where(:zombie_weapons => { zombie_id: params[:id] } ).all
         @zombie_weapons = @zombie_weapons.where("name LIKE ?", "%#{params[:name]}%") if params[:name]
+        @zombie_weapons = @zombie_weapons.where("attack_points LIKE ?", params[:attack_points]) if params[:attack_points]
+        @zombie_weapons = @zombie_weapons.where("durability LIKE ?", params[:durability]) if params[:durability]
+        @zombie_weapons = @zombie_weapons.where("price LIKE ?", params[:price]) if params[:price]
         json_response(@zombie_weapons)
       end
 
