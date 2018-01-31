@@ -19,15 +19,28 @@ module Api
         json_response(@zombie)
       end
       def index_armor
+        @zombie = Zombie.find(params[:id])
+        json_response(@zombie.zombie_armors)
+      end
+      def index_armor_details
         build_zombie_armors_query
       end
-      def index_weapon
-        build_zombie_weapons_query
+      def show_armor
+        @zombie = Zombie.find(params[:id])
+        @zombie_armor = @zombie.zombie_armors.find(params[:zombie_armor_id])
+        json_response(@zombie_armor.armor)
       end
       def add_armor
         @zombie = Zombie.find(params[:id])
         @zombie_armor = @zombie.zombie_armors.create(armor_id: params[:armor_id])
         json_response(@zombie_armor.armor)
+      end
+      def index_weapon
+        @zombie = Zombie.find(params[:id])
+        json_response(@zombie.zombie_weapons)
+      end
+      def index_weapon_details
+        build_zombie_weapons_query
       end
       def add_weapon
         @zombie = Zombie.find(params[:id])
@@ -54,6 +67,8 @@ module Api
       def build_zombie_armors_query
         @zombie_armors = Armor.includes(:zombie_armors).where(:zombie_armors => { zombie_id: params[:id] } ).all
         @zombie_armors = @zombie_armors.where("name LIKE ?", "%#{params[:name]}%") if params[:name]
+        @zombie_armors = @zombie_armors.where("name LIKE ?", "%#{params[:attack_points]}%") if params[:attack_points]
+
         json_response(@zombie_armors)
       end
       def build_zombie_weapons_query
