@@ -2,7 +2,7 @@ module Api
   module V1
     class ZombiesController < ApplicationController
       def index
-        build_zombies_query
+      build_zombies_query
       end
       def show
         @zombie = Zombie.find(params[:id])
@@ -26,13 +26,13 @@ module Api
       end
       def add_armor
         @zombie = Zombie.find(params[:id])
-        @zombie.zombie_armors.create(armor_id: params[:armor_id])
-        json_response(@zombie.zombie_armors)
+        @zombie_armor = @zombie.zombie_armors.create(armor_id: params[:armor_id])
+        json_response(@zombie_armor.armor)
       end
       def add_weapon
         @zombie = Zombie.find(params[:id])
-        @zombie.zombie_weapons.create(weapon_id: params[:weapon_id])
-        json_response(@zombie.zombie_weapons)
+        @zombie_weapon = @zombie.zombie_weapons.create(weapon_id: params[:weapon_id])
+        json_response(@zombie_weapon.weapon)
       end
       def destroy
         @zombie = Zombie.find(params[:id])
