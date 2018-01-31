@@ -27,6 +27,12 @@ Rails.application.routes.draw do
           post ':id/destroy', to: 'armors#destroy'
         end
       end
+      resources :weapons, only: ['index', 'show', 'create'] do
+        collection do
+          post ':id/update', to: 'weapons#update'
+          post ':id/destroy', to: 'weapons#destroy'
+        end
+      end
     end
   end
 end
