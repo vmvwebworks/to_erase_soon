@@ -54,7 +54,7 @@ module Api
       def show_weapon
         @zombie = Zombie.find(params[:id])
         @zombie_weapon = @zombie.zombie_weapons.find(params[:zombie_weapon_id])
-        json_response(@zombie_armor.weapon)
+        json_response(@zombie_weapon.weapon)
       end
 
       def add_weapon

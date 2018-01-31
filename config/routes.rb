@@ -16,7 +16,7 @@ Rails.application.routes.draw do
           get ':id/weapons', to: 'zombies#index_weapon'
           get ':id/weapons/details', to: 'zombies#index_weapon_details'
           post ':id/add_weapon/:weapon_id', to: 'zombies#add_weapon'
-          get ':id/armors/:zombie_weapon_id', to: 'zombies#show_weapon'
+          get ':id/weapons/:zombie_weapon_id', to: 'zombies#show_weapon'
         end
       end
     end
