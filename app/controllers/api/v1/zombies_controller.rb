@@ -22,6 +22,14 @@ module Api
         json_response(@zombie)
       end
 
+      def destroy
+        @zombie = Zombie.find(params[:id])
+        @zombie.zombie_armors.destroy
+        @zombie.zombie_weapons.destroy
+        @zombie.destroy
+        json_response(@zombie)
+      end
+
       def index_armor
         @zombie = Zombie.find(params[:id])
         json_response(@zombie.zombie_armors)
@@ -43,10 +51,18 @@ module Api
         json_response(@zombie_armor.armor)
       end
 
+      def destroy_armor
+        @zombie = Zombie.find(params[:id])
+        @zombie_armor = @zombie.zombie_armors.find(params[:zombie_armor_id])
+        @zombie_armor.destroy
+        json_response(@zombie_armor)
+      end
+
       def index_weapon
         @zombie = Zombie.find(params[:id])
         json_response(@zombie.zombie_weapons)
       end
+
       def index_weapon_details
         build_zombie_weapons_query
       end
@@ -62,14 +78,14 @@ module Api
         @zombie_weapon = @zombie.zombie_weapons.create(weapon_id: params[:weapon_id])
         json_response(@zombie_weapon.weapon)
       end
-
-      def destroy
+      def destroy_weapon
         @zombie = Zombie.find(params[:id])
-        @zombie.zombie_armors.destroy
-        @zombie.zombie_weapons.destroy
-        @zombie.destroy
-        json_response(@zombie)
+        @zombie_weapon = @zombie.zombie_weapons.find(params[:zombie_weapon_id])
+        @zombie_weapon.destroy
+        json_response(@zombie_weapon)
       end
+
+
 
 
       private
