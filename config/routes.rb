@@ -21,6 +21,12 @@ Rails.application.routes.draw do
           post ':id/weapons/:zombie_weapon_id/destroy', to: 'zombies#destroy_weapon'
         end
       end
+      resources :armors, only: ['index', 'show', 'create'] do
+        collection do
+          post ':id/update', to: 'armors#update'
+          post ':id/destroy', to: 'armors#destroy'
+        end
+      end
     end
   end
 end
