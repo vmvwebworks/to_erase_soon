@@ -1,5 +1,4 @@
 ![Challgen accepted](https://www.pubnub.com/wp-content/uploads/2014/08/determined-challenge-accepted-l.png)
-I uploaded this to Heroku to enable yours to try it
 
 ### All the request on this api should be done with `GET/POST` requests
 # Instructions
